@@ -73,15 +73,6 @@ The tool will:
 - **Simulation**: Rule-based engine
 - **No dependencies**: Runs entirely in browser
 
-## Hackathon Ready
-
-Built for rapid prototyping and impressive demos:
-- ⚡ Fast setup (no build tools)
-- 🎨 Beautiful UI with smooth animations
-- 📱 Responsive design
-- 🚀 Instant feedback
-- 💾 No backend required
-
 ## Architecture
 
 ```
@@ -152,11 +143,8 @@ Files:
 
 ## Future Enhancements
 
-- [ ] Export architecture diagrams
-- [ ] Save/load designs
 - [ ] More cloud providers (Azure, GCP)
 - [ ] Advanced cost models
 - [ ] Security analysis
 - [ ] Compliance checking
 - [ ] Team collaboration
-- [ ] AI-powered suggestions
