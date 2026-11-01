@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Bedrock Integration</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+        .success { color: green; }
+        .error { color: red; }
+        pre { background: #f5f5f5; padding: 10px; border-radius: 4px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>🤖 Bedrock Integration Test</h1>
+    
+    <div class="test-section">
+        <h2>1. Configuration Test</h2>
+        <button onclick="testConfig()">Test Configuration</button>
+        <div id="config-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>2. AWS Signing Test</h2>
+        <button onclick="testSigning()">Test AWS Signature</button>
+        <div id="signing-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>3. Bedrock API Test</h2>
+        <p>Enter your AWS credentials:</p>
+        <input type="text" id="test-access-key" placeholder="Access Key ID" style="width: 100%; margin: 5px 0; padding: 8px;">
+        <input type="password" id="test-secret-key" placeholder="Secret Access Key" style="width: 100%; margin: 5px 0; padding: 8px;">
+        <button onclick="testBedrockAPI()">Test Bedrock API Call</button>
+        <div id="api-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>4. Full Analysis Test</h2>
+        <button onclick="testFullAnalysis()">Test Architecture Analysis</button>
+        <div id="analysis-result"></div>
+    </div>
+    
+    <script src="bedrock-integration.js"></script>
+    <script>
+        function testConfig() {
+            const result = document.getElementById('config-result');
+            const config = loadBedrockConfig();
+            result.innerHTML = `
+                <p class="${config.enabled ? 'success' : 'error'}">
+                    Enabled: ${config.enabled}<br>
+                    Region: ${config.region}<br>
+                    Has Access Key: ${config.accessKeyId ? 'Yes' : 'No'}<br>
+                    Has Secret Key: ${config.secretAccessKey ? 'Yes' : 'No'}<br>
+                    Is Configured: ${isBedrockConfigured() ? 'Yes' : 'No'}
+                </p>
+            `;
+        }
+        
+        async function testSigning() {
+            const result = document.getElementById('signing-result');
+            result.innerHTML = '<p>Testing AWS signature generation...</p>';
+            
+            try {
+                const testMessage = 'test message';
+                const hash = await sha256(testMessage);
+                result.innerHTML = `<p class="success">✅ SHA256 works!<br>Hash: ${hash.substring(0, 32)}...</p>`;
+            } catch (error) {
+                result.innerHTML = `<p class="error">❌ Error: ${error.message}</p>`;
+            }
+        }
+        
+        async function testBedrockAPI() {
+            const result = document.getElementById('api-result');
+            const accessKey = document.getElementById('test-access-key').value;
+            const secretKey = document.getElementById('test-secret-key').value;
+            
+            if (!accessKey || !secretKey) {
+                result.innerHTML = '<p class="error">Please enter both credentials</p>';
+                return;
+            }
+            
+            result.innerHTML = '<p>🔄 Calling Bedrock API...</p>';
+            
+            // Save config temporarily
+            saveBedrockConfig({
+                region: 'us-east-1',
+                accessKeyId: accessKey,
+                secretAccessKey: secretKey,
+                enabled: true
+            });
+            
+            try {
+                const response = await callBedrock('Say "Hello from Bedrock!" in exactly 5 words.');
+                result.innerHTML = `<p class="success">✅ Success!<br><strong>Response:</strong> ${response}</p>`;
+            } catch (error) {
+                result.innerHTML = `<p class="error">❌ Error: ${error.message}</p>`;
+            }
+        }
+        
+        async function testFullAnalysis() {
+            const result = document.getElementById('analysis-result');
+            
+            if (!isBedrockConfigured()) {
+                result.innerHTML = '<p class="error">Please configure Bedrock first (test #3)</p>';
+                return;
+            }
+            
+            result.innerHTML = '<p>🔄 Running full architecture analysis...</p>';
+            
+            const mockArchitecture = {
+                components: [
+                    { type: 'api-gateway', name: 'API Gateway' },
+                    { type: 'Lambda', name: 'Lambda' },
+                    { type: 'RDS-PostgreSQL', name: 'RDS PostgreSQL' }
+                ],
+                connections: [
+                    { from: 0, to: 1 },
+                    { from: 1, to: 2 }
+                ],
+                currentLatency: 150,
+                currentCost: 500,
+                throughput: 10000,
+                bottlenecks: [],
+                spofs: ['RDS-PostgreSQL']
+            };
+            
+            const mockContext = {
+                industry: 'E-commerce',
+                users: 5000,
+                traffic: 10000,
+                dataVolume: 500,
+                regions: ['us-east-1'],
+                budget: 5000,
+                compliance: ['PCI-DSS', 'GDPR'],
+                latency: 200,
+                availability: 99.9,
+                rto: 15,
+                rpo: 5,
+                techStack: {
+                    compute: ['Lambda', 'EC2'],
+                    database: ['RDS-PostgreSQL', 'DynamoDB'],
+                    cache: ['Redis'],
+                    messaging: ['SQS']
+                }
+            };
+            
+            try {
+                const analysis = await analyzeArchitectureWithAI(mockArchitecture, mockContext);
+                result.innerHTML = `
+                    <p class="success">✅ Analysis Complete!</p>
+                    <pre>${JSON.stringify(analysis, null, 2)}</pre>
+                `;
+            } catch (error) {
+                result.innerHTML = `<p class="error">❌ Error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

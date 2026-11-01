@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Designer - Quick Start</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            max-width: 800px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        h1 {
+            font-size: 48px;
+            color: #212529;
+            margin-bottom: 16px;
+        }
+        .subtitle {
+            font-size: 20px;
+            color: #6c757d;
+            margin-bottom: 40px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+            text-align: left;
+        }
+        .feature {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+        .feature-title {
+            font-weight: 600;
+            color: #212529;
+            margin-bottom: 4px;
+        }
+        .feature-desc {
+            font-size: 14px;
+            color: #6c757d;
+        }
+        .btn-launch {
+            display: inline-block;
+            padding: 20px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        .btn-launch:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+        }
+        .quick-tips {
+            margin-top: 40px;
+            padding: 20px;
+            background: #fff3cd;
+            border-radius: 12px;
+            border-left: 4px solid #ffc107;
+            text-align: left;
+        }
+        .quick-tips h3 {
+            color: #856404;
+            margin-bottom: 12px;
+        }
+        .quick-tips ol {
+            margin-left: 20px;
+            color: #856404;
+        }
+        .quick-tips li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏗️ AI Architect - AI Powered System Solution Designer Studio</h1>
+        <p class="subtitle">Design, Simulate, and Optimize Your Architecture in Real-Time</p>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🎯</div>
+                <div class="feature-title">Context-Aware</div>
+                <div class="feature-desc">Respects your org's tech stack and constraints</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📊</div>
+                <div class="feature-title">Live Metrics</div>
+                <div class="feature-desc">Real-time cost, latency, and throughput analysis</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💡</div>
+                <div class="feature-title">Smart Suggestions</div>
+                <div class="feature-desc">AI-powered recommendations for optimization</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔮</div>
+                <div class="feature-title">What-If Scenarios</div>
+                <div class="feature-desc">Test failures and scaling before they happen</div>
+            </div>
+        </div>
+        
+        <a href="index.html" class="btn-launch">🚀 Launch Designer Studio</a>
+        
+        <div class="quick-tips">
+            <h3>⚡ Quick Start Tips</h3>
+            <ol>
+                <li>Click "Load Sample E-commerce" on Step 1 for pre-filled data</li>
+                <li>Click through the 4 input steps (or customize as needed)</li>
+                <li>On the design canvas, click "Load Sample" for a starter architecture</li>
+                <li>Click "Simulate" to see real-time metrics and suggestions</li>
+                <li>Try "What-If" scenarios to test failure cases</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
