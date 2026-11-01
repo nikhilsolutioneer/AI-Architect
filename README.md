@@ -1,6 +1,6 @@
-# System Solution Designer Studio
+# AI Architect | AI Powered System Solution Designer Studio
 
-A real-time system architecture design and simulation tool that helps architects visualize, analyze, and optimize their solutions.
+A real-time system architecture design and simulation tool that helps architects visualize, analyze, and optimize their solutions powered by AI.
 
 ## Features
 
